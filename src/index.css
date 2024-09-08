@@ -4,6 +4,8 @@
   padding: 0;
 }
 
+
+
 .allcontainer {
   display: flex;
   flex-direction: column;
@@ -30,9 +32,15 @@
   justify-content: space-between;
 }
 
+.content-ucret {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
 .content-points {
   display: flex;
   gap: 3rem;
+  align-items: center;
 }
 
 }
@@ -58,11 +66,26 @@
 
 .ek-malzeme-area {
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
 }
-
 .malzemeler{
   display: flex;
   flex-wrap: wrap;
-  gap:0.5;
+}
+
+.malzeme {
+  border: 1px solid black;
+  width: 150px;
+}
+
+.siparis-notu {
+  border: 1px solid black;
+
+}
+
+#siparis-notu {
+  width: 100%;
 }
