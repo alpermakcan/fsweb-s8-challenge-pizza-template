@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./assets/components/Header";
 import Content from "./assets/components/Content";
-import { FormGroup, Input, Label } from "reactstrap";
+import { Card } from "reactstrap";
 
 const ekMalzemeler = [
   "Pepperoni",
@@ -103,7 +103,9 @@ function App() {
   console.log(siparis);
   return (
     <>
+    <div className="allcontainer">
       <Header />
+      <Card>
       <Content ucret={pizza_ucreti} />
       <div className="boyut-hamur-area">
         <div className="multiple-area">
@@ -143,9 +145,10 @@ function App() {
       <div className="ek-malzeme-area">
         <h3>Ek Malzemeler</h3>
         <p>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
+        <div className="malzemeler">
         {ekMalzemeler.map((malzeme, index) => {
           return (
-            <label key={index}>
+            <label key={index} className="malzeme">
               <input
                 type="checkbox"
                 name="ek-malzeme"
@@ -157,6 +160,7 @@ function App() {
             </label>
           );
         })}
+        </div>
       </div>
       <div className="siparis-notu">
         <h3>Sipariş Notu</h3>
@@ -200,6 +204,8 @@ function App() {
             SİPARİŞ VER
           </button>
         </div>
+      </div>
+      </Card>
       </div>
     </>
   );
