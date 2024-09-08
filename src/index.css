@@ -49,9 +49,16 @@
   justify-content: space-between;
 }
 
-.ek-malzeme-area {
+.boyut-area {
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.ek-malzeme-area {
+  border: 1px solid black;
+
 }
 
 .malzemeler{

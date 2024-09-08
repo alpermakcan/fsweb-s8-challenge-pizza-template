@@ -108,7 +108,7 @@ function App() {
       <Card>
       <Content ucret={pizza_ucreti} />
       <div className="boyut-hamur-area">
-        <div className="multiple-area">
+        <div className="boyut-area">
           <h3>Boyut seç</h3>
           {boyutlar.map((boyut, index) => {
             return (
