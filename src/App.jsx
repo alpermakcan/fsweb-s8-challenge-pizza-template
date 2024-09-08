@@ -36,8 +36,8 @@ const initialSiparis = {
 };
 
 const initialErrors = {
-  boyut: "",
-  hamur: "",
+  boyut: "Lütfen pizza boyutu seçiniz",
+  hamur: "Lütfen hamur tipi seçiniz",
 };
 
 const errorMessages = {
@@ -63,23 +63,18 @@ function App() {
   }, [siparis])
 
 
-  function handleClick(event) {
-    const { name, value} = event.target;
-    console.log(event)
-    if (name === "cikar"){
-      setAdet((adet) => adet - 1);
-    } else if (name === "ekle") {
-      setAdet((adet) => adet + 1);
-    }
-    setSiparis({...siparis, adet: value})
-    
-  }
-
+  
 
   function handleInputChange(event) {
-    let { name, value } = event.target;
+    let { id, name, value } = event.target;
     
     //state'i güncelle
+    if (id === "cikar"){
+      setAdet((adet) => adet - 1);
+    } else if (id === "ekle") {
+      setAdet((adet) => adet + 1);
+    }
+
     if (name === 'ek-malzeme') {
       if (siparis["ek-malzeme"].includes(value)) {
         setSiparis({
@@ -95,9 +90,22 @@ function App() {
     } else {
       setSiparis({ ...siparis, [name]: value });
     }
-    
-    
 
+    //validation kuralları
+    if (name === "boyut"){
+      if(siparis.boyut === ""){
+        setErrors({...errors, [name]: errorMessages.boyut})
+      } else {
+        setErrors({...errors, [name]: ""})
+      }
+    }
+    if (name === "hamur"){
+      if(siparis.hamur === ""){
+        setErrors({...errors, [name]: errorMessages.hamur})
+      } else {
+        setErrors({...errors, [name]: ""})
+      }
+    }
   }
   console.log(siparis);
   return (
@@ -119,6 +127,7 @@ function App() {
             {boyut}
           </label>
           })}
+          {errors.boyut && <p className="error-message">{errors.boyut}</p>}
         </div>
         <div className="multiple-area">
           <h3>Hamur seç</h3>
@@ -133,6 +142,7 @@ function App() {
               <option value="Kalın">Kalın Hamur</option>
             </select>
           </label>
+          {errors.hamur && <p className="error-message">{errors.hamur}</p>}
         </div>
       </div>
       <div className="ek-malzeme-area">
@@ -166,14 +176,14 @@ function App() {
       </div>
       <div>
         <div>
-        <button name="cikar" value={adet} onClick={handleClick}>-</button>
+        <button id="cikar" name="adet" value={adet} onClick={handleInputChange}>-</button>
         <p>{adet}</p>
-        <button name="ekle" value={adet} onClick={handleClick}>+</button>
+        <button id="ekle" name="adet" value={adet} onClick={handleInputChange}>+</button>
         </div>
         <div>
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler..........{siparis["ek-malzeme"].length * 5}</p>
-          <p>Toplam..........{(85.50 + siparis["ek-malzeme"].length * 5) * adet}</p>
+          <p>Toplam..........{(pizza_ucreti + siparis["ek-malzeme"].length * 5) * adet}</p>
           <button disabled={!isValid} type="submit">SİPARİŞ VER</button>
         </div>
       </div>
