@@ -30,7 +30,7 @@ const initialSiparis = {
   boyut: "",
   hamur: "",
   "ek-malzeme": "",
-  siparis_notu: "",
+  "siparis-notu": "",
   adet: "",
   fiyat: "",
 };
@@ -103,14 +103,16 @@ function App() {
               name="hamur"
               onChange={handleInputChange}
             >
-              <option value="İnce">İnce</option>
-              <option value="Orta">Orta</option>
-              <option value="Kalın">Kalın</option>
+              <option value="İnce">İnce Hamur</option>
+              <option value="Orta">Orta Hamur</option>
+              <option value="Kalın">Kalın Hamur</option>
             </select>
           </label>
         </div>
       </div>
       <div className="ek-malzeme-area">
+        <h3>Ek Malzemeler</h3>
+        <p>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
         {ekMalzemeler.map((malzeme, index) => {
           return (
             <label key={index}>
@@ -125,6 +127,17 @@ function App() {
             </label>
           );
         })}
+      </div>
+      <div>
+        <h3>Sipariş Notu</h3>
+        <label className="bold-label">
+        <textarea
+          id="siparis-notu"
+          name="siparis-notu"
+          value={siparis["siparis-notu"]}
+          onChange={handleInputChange}
+        />
+        </label>
       </div>
     </>
   );
