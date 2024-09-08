@@ -31,7 +31,7 @@ const initialSiparis = {
   hamur: "",
   "ek-malzeme": "",
   "siparis-notu": "",
-  adet: "",
+  adet: "1",
   fiyat: "",
 };
 
@@ -51,6 +51,7 @@ function App() {
   const [siparis, setSiparis] = useState(initialSiparis);
   const [errors, setErrors] = useState(initialErrors);
   const [isValid, setIsValid] = useState(false);
+  const [adet, setAdet] = useState(1);
 
   useEffect(() => {
     if(siparis.boyut !== "" && siparis.hamur !== ""){
@@ -61,8 +62,21 @@ function App() {
   }, [siparis])
 
 
+  function handleClick(event) {
+    const { name, value} = event.target;
+    console.log(event)
+    if (name === "cikar"){
+      setAdet((adet) => adet - 1);
+    } else if (name === "ekle") {
+      setAdet((adet) => adet + 1);
+    }
+    setSiparis({...siparis, adet: value})
+    
+  }
+
+
   function handleInputChange(event) {
-    let { name, value, type, checked } = event.target;
+    let { name, value } = event.target;
     
     //state'i güncelle
     if (name === 'ek-malzeme') {
@@ -80,6 +94,7 @@ function App() {
     } else {
       setSiparis({ ...siparis, [name]: value });
     }
+    
     
 
   }
@@ -150,14 +165,14 @@ function App() {
       </div>
       <div>
         <div>
-        <button>-</button>
-        <p>Adet</p>
-        <button>+</button>
+        <button name="cikar" value={adet} onClick={handleClick}>-</button>
+        <p>{adet}</p>
+        <button name="ekle" value={adet} onClick={handleClick}>+</button>
         </div>
         <div>
           <h3>Sipariş Toplamı</h3>
-          <p>Seçimler..........25.00₺</p>
-          <p>Toplam..........110.50₺</p>
+          <p>Seçimler..........{siparis["ek-malzeme"].length * 5}</p>
+          <p>Toplam..........{(85.50 + siparis["ek-malzeme"].length * 5) * adet}</p>
           <button disabled={!isValid} type="submit">SİPARİŞ VER</button>
         </div>
       </div>
