@@ -46,6 +46,7 @@ const errorMessages = {
 };
 
 const pizza_boyut = ["küçük", "orta", "büyük"];
+const pizza_ucreti = 85.50;
 
 function App() {
   const [siparis, setSiparis] = useState(initialSiparis);
@@ -102,7 +103,7 @@ function App() {
   return (
     <>
       <Header />
-      <Content />
+      <Content ucret={pizza_ucreti}/>
       <div className="boyut-hamur-area">
         <div className="multiple-area">
           <h3>Boyut seç</h3>

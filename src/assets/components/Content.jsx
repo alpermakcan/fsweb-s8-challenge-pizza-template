@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Content() {
+export default function Content({ucret}) {
   return (
     <>
       <div>
-        <p>85.50₺</p>
+        <p>{ucret}</p>
         <div>
             <p>4.9</p>
             <p>(200)</p>
