@@ -16,7 +16,6 @@ const ekMalzemeler = [
   "Jalepeno",
   "Sarımsak",
   "Biber",
-  "Sucuk",
   "Ananas",
   "Kabak",
 ];
@@ -128,11 +127,11 @@ function App() {
           return (
             <label key={index}>
               <input
-                type="radio"
+                type="checkbox"
                 name="ek-malzeme"
                 value={malzeme}
                 onChange={handleInputChange}
-                checked={siparis["ek-malzeme"].includes() === malzeme}
+                checked={siparis["ek-malzeme"].includes(malzeme)}
               />{" "}
               {malzeme}
             </label>
