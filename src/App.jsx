@@ -196,7 +196,7 @@ function App() {
         <div className="siparis-toplami">
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler..........{siparis["ek-malzeme"].length * 5}</p>
-          <p>
+          <p id="kirmizi">
             Toplam..........
             {(pizza_ucreti + siparis["ek-malzeme"].length * 5) * adet}
           </p>
