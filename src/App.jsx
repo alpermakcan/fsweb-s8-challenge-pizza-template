@@ -128,7 +128,7 @@ function App() {
           );
         })}
       </div>
-      <div>
+      <div className="siparis-notu">
         <h3>Sipariş Notu</h3>
         <label className="bold-label">
         <textarea
@@ -138,6 +138,19 @@ function App() {
           onChange={handleInputChange}
         />
         </label>
+      </div>
+      <div>
+        <div>
+        <button>-</button>
+        <p>Adet</p>
+        <button>+</button>
+        </div>
+        <div>
+          <h3>Sipariş Toplamı</h3>
+          <p>Seçimler..........25.00₺</p>
+          <p>Toplam..........110.50₺</p>
+          <button>SİPARİŞ VER</button>
+        </div>
       </div>
     </>
   );
