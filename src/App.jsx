@@ -20,11 +20,7 @@ const ekMalzemeler = [
   "Kabak",
 ];
 
-const boyutlar = [
-  "Küçük",
-  "Orta",
-  "Büyük"
-]
+const boyutlar = ["Küçük", "Orta", "Büyük"];
 
 const initialSiparis = {
   boyut: "",
@@ -46,7 +42,7 @@ const errorMessages = {
 };
 
 const pizza_boyut = ["küçük", "orta", "büyük"];
-const pizza_ucreti = 85.50;
+const pizza_ucreti = 85.5;
 
 function App() {
   const [siparis, setSiparis] = useState(initialSiparis);
@@ -55,27 +51,24 @@ function App() {
   const [adet, setAdet] = useState(1);
 
   useEffect(() => {
-    if(siparis.boyut !== "" && siparis.hamur !== ""){
-      setIsValid(true)
+    if (siparis.boyut !== "" && siparis.hamur !== "") {
+      setIsValid(true);
     } else {
-      setIsValid(false)
+      setIsValid(false);
     }
-  }, [siparis])
-
-
-  
+  }, [siparis]);
 
   function handleInputChange(event) {
     let { id, name, value } = event.target;
-    
+
     //state'i güncelle
-    if (id === "cikar"){
+    if (id === "cikar") {
       setAdet((adet) => adet - 1);
     } else if (id === "ekle") {
       setAdet((adet) => adet + 1);
     }
 
-    if (name === 'ek-malzeme') {
+    if (name === "ek-malzeme") {
       if (siparis["ek-malzeme"].includes(value)) {
         setSiparis({
           ...siparis,
@@ -92,18 +85,18 @@ function App() {
     }
 
     //validation kuralları
-    if (name === "boyut"){
-      if(siparis.boyut === ""){
-        setErrors({...errors, [name]: errorMessages.boyut})
+    if (name === "boyut") {
+      if (siparis.boyut === "") {
+        setErrors({ ...errors, [name]: errorMessages.boyut });
       } else {
-        setErrors({...errors, [name]: ""})
+        setErrors({ ...errors, [name]: "" });
       }
     }
-    if (name === "hamur"){
-      if(siparis.hamur === ""){
-        setErrors({...errors, [name]: errorMessages.hamur})
+    if (name === "hamur") {
+      if (siparis.hamur === "") {
+        setErrors({ ...errors, [name]: errorMessages.hamur });
       } else {
-        setErrors({...errors, [name]: ""})
+        setErrors({ ...errors, [name]: "" });
       }
     }
   }
@@ -111,21 +104,23 @@ function App() {
   return (
     <>
       <Header />
-      <Content ucret={pizza_ucreti}/>
+      <Content ucret={pizza_ucreti} />
       <div className="boyut-hamur-area">
         <div className="multiple-area">
           <h3>Boyut seç</h3>
           {boyutlar.map((boyut, index) => {
-            return <label key={index}>
-            <input
-              type="radio"
-              name="boyut"
-              value={boyut}
-              onChange={handleInputChange}
-              checked={siparis.boyut === boyut}
-            />{" "}
-            {boyut}
-          </label>
+            return (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name="boyut"
+                  value={boyut}
+                  onChange={handleInputChange}
+                  checked={siparis.boyut === boyut}
+                />{" "}
+                {boyut}
+              </label>
+            );
           })}
           {errors.boyut && <p className="error-message">{errors.boyut}</p>}
         </div>
@@ -166,25 +161,44 @@ function App() {
       <div className="siparis-notu">
         <h3>Sipariş Notu</h3>
         <label className="bold-label">
-        <textarea
-          id="siparis-notu"
-          name="siparis-notu"
-          value={siparis["siparis-notu"]}
-          onChange={handleInputChange}
-        />
+          <textarea
+            id="siparis-notu"
+            name="siparis-notu"
+            value={siparis["siparis-notu"]}
+            onChange={handleInputChange}
+          />
         </label>
       </div>
       <div>
         <div>
-        <button id="cikar" name="adet" value={adet} onClick={handleInputChange}>-</button>
-        <p>{adet}</p>
-        <button id="ekle" name="adet" value={adet} onClick={handleInputChange}>+</button>
+          <button
+            id="cikar"
+            name="adet"
+            value={adet}
+            onClick={handleInputChange}
+          >
+            -
+          </button>
+          <p>{adet}</p>
+          <button
+            id="ekle"
+            name="adet"
+            value={adet}
+            onClick={handleInputChange}
+          >
+            +
+          </button>
         </div>
         <div>
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler..........{siparis["ek-malzeme"].length * 5}</p>
-          <p>Toplam..........{(pizza_ucreti + siparis["ek-malzeme"].length * 5) * adet}</p>
-          <button disabled={!isValid} type="submit">SİPARİŞ VER</button>
+          <p>
+            Toplam..........
+            {(pizza_ucreti + siparis["ek-malzeme"].length * 5) * adet}
+          </p>
+          <button disabled={!isValid} type="submit">
+            SİPARİŞ VER
+          </button>
         </div>
       </div>
     </>

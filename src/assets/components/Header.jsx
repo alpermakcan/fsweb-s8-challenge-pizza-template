@@ -1,11 +1,14 @@
-import React from "react"
+import React from "react";
 
 export default function Header() {
-
-
-    return (
-        <>
-        <img src="Assets/Iteration-1-assets/logo.svg" alt="teknolojik yemekler başlığı" />
-        </>
-    )
+  return (
+    <>
+      <div>
+        <img
+          src="Assets/Iteration-1-assets/logo.svg"
+          alt="teknolojik yemekler başlığı"
+        />
+      </div>
+    </>
+  );
 }
