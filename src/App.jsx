@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./assets/components/Header";
 import Content from "./assets/components/Content";
@@ -52,9 +52,18 @@ function App() {
   const [errors, setErrors] = useState(initialErrors);
   const [isValid, setIsValid] = useState(false);
 
+  useEffect(() => {
+    if(siparis.boyut !== "" && siparis.hamur !== ""){
+      setIsValid(true)
+    } else {
+      setIsValid(false)
+    }
+  }, [siparis])
+
+
   function handleInputChange(event) {
     let { name, value, type, checked } = event.target;
-
+    
     //state'i güncelle
     if (name === 'ek-malzeme') {
       if (siparis["ek-malzeme"].includes(value)) {
@@ -149,7 +158,7 @@ function App() {
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler..........25.00₺</p>
           <p>Toplam..........110.50₺</p>
-          <button>SİPARİŞ VER</button>
+          <button disabled={!isValid} type="submit">SİPARİŞ VER</button>
         </div>
       </div>
     </>
