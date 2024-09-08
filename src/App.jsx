@@ -126,7 +126,7 @@ function App() {
           })}
           {errors.boyut && <p className="error-message">{errors.boyut}</p>}
         </div>
-        <div className="multiple-area">
+        <div className="hamur-area">
           <h3>Hamur seç</h3>
           <label className="bold-label">
             <select
@@ -173,8 +173,8 @@ function App() {
           />
         </label>
       </div>
-      <div>
-        <div>
+      <div className="hesap-butonlari">
+        <div className="adet-butonlari">
           <button
             id="cikar"
             name="adet"
@@ -183,7 +183,7 @@ function App() {
           >
             -
           </button>
-          <p>{adet}</p>
+          <p id="adettendir" >{adet}</p>
           <button
             id="ekle"
             name="adet"
@@ -193,7 +193,7 @@ function App() {
             +
           </button>
         </div>
-        <div>
+        <div className="siparis-toplami">
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler..........{siparis["ek-malzeme"].length * 5}</p>
           <p>
