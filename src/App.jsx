@@ -23,7 +23,7 @@ const ekMalzemeler = [
 const initialSiparis = {
   boyut: "",
   hamur: "",
-  ek_malzeme: "",
+  "ek-malzeme": "",
   siparis_notu: "",
   adet: "",
   fiyat: "",
@@ -49,11 +49,26 @@ function App() {
   function handleInputChange(event) {
     let { name, value, type, checked } = event.target;
 
-    if (name === "boyut") {
+    //state'i güncelle
+    if (name === 'ek-malzeme') {
+      if (siparis["ek-malzeme"].includes(value)) {
+        setSiparis({
+          ...siparis,
+          [name]: siparis["ek-malzeme"].filter((malzeme) => malzeme !== value),
+        });
+      } else {
+        setSiparis({
+          ...siparis,
+          [name]: [...siparis["ek-malzeme"], value],
+        });
+      }
+    } else {
       setSiparis({ ...siparis, [name]: value });
     }
-    console.log(siparis);
+    
+
   }
+  console.log(siparis);
   return (
     <>
       <Header />
@@ -117,7 +132,7 @@ function App() {
                 name="ek-malzeme"
                 value={malzeme}
                 onChange={handleInputChange}
-                checked={siparis.ek_malzeme === malzeme}
+                checked={siparis["ek-malzeme"].includes() === malzeme}
               />{" "}
               {malzeme}
             </label>
