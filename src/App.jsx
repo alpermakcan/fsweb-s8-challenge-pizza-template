@@ -19,6 +19,13 @@ const ekMalzemeler = [
   "Ananas",
   "Kabak",
 ];
+
+const boyutlar = [
+  "Küçük",
+  "Orta",
+  "Büyük"
+]
+
 const initialSiparis = {
   boyut: "",
   hamur: "",
@@ -74,42 +81,23 @@ function App() {
       <Content />
       <div className="boyut-hamur-area">
         <div className="multiple-area">
-          <h3>Departman seçiniz:</h3>
-          <label>
+          <h3>Boyut seç</h3>
+          {boyutlar.map((boyut, index) => {
+            return <label key={index}>
             <input
               type="radio"
               name="boyut"
-              value="küçük"
+              value={boyut}
               onChange={handleInputChange}
-              checked={siparis.boyut === "küçük"}
+              checked={siparis.boyut === boyut}
             />{" "}
-            Küçük
+            {boyut}
           </label>
-          <label>
-            <input
-              type="radio"
-              name="boyut"
-              value="orta"
-              onChange={handleInputChange}
-              checked={siparis.boyut === "orta"}
-            />{" "}
-            Orta
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="boyut"
-              value="büyük"
-              onChange={handleInputChange}
-              checked={siparis.boyut === "büyük"}
-            />{" "}
-            Büyük
-          </label>
-          {errors.boyut && <p className="error-message">{errors.boyut}</p>}
+          })}
         </div>
         <div className="multiple-area">
+          <h3>Hamur seç</h3>
           <label className="bold-label">
-            Hamur Seç
             <select
               value={siparis.hamur}
               name="hamur"
