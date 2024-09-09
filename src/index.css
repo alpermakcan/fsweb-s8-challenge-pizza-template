@@ -116,14 +116,14 @@
 #ekle {
   padding: 30% 50%;
   border-right: 1px solid gray;
-  border-top-right-radius: 0.3rem ;
+  border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
 }
 
 #cikar {
   padding: 30% 50%;
   border-right: 1px solid gray;
-  border-top-left-radius: 0.3rem ;
+  border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
 }
 

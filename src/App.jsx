@@ -103,11 +103,11 @@ function App() {
   console.log(siparis);
   return (
     <>
-    <div className="allcontainer">
+    <section className="allcontainer">
       <Header />
       <Card>
       <Content ucret={pizza_ucreti} />
-      <div className="boyut-hamur-area">
+      <section className="boyut-hamur-area">
         <div className="boyut-area">
           <h3>Boyut seç</h3>
           {boyutlar.map((boyut, index) => {
@@ -141,8 +141,8 @@ function App() {
           </label>
           {errors.hamur && <p className="error-message">{errors.hamur}</p>}
         </div>
-      </div>
-      <div className="ek-malzeme-area">
+      </section>
+      <section className="ek-malzeme-area">
         <h3>Ek Malzemeler</h3>
         <p>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
         <div className="malzemeler">
@@ -161,8 +161,8 @@ function App() {
           );
         })}
         </div>
-      </div>
-      <div className="siparis-notu">
+      </section>
+      <section className="siparis-notu">
         <h3>Sipariş Notu</h3>
         <label className="bold-label">
           <textarea
@@ -172,8 +172,8 @@ function App() {
             onChange={handleInputChange}
           />
         </label>
-      </div>
-      <div className="hesap-butonlari">
+      </section>
+      <section className="hesap-butonlari">
         <div className="adet-butonlari">
           <button
             id="cikar"
@@ -204,9 +204,9 @@ function App() {
             SİPARİŞ VER
           </button>
         </div>
-      </div>
+      </section>
       </Card>
-      </div>
+      </section>
     </>
   );
 }
