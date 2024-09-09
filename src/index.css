@@ -113,13 +113,23 @@
   align-items: center;
 }
 
-#ekle,
+#ekle {
+  padding: 30% 50%;
+  border-right: 1px solid gray;
+  border-top-right-radius: 0.3rem ;
+  border-bottom-right-radius: 0.3rem;
+}
+
 #cikar {
-  padding: 20% 50%;
+  padding: 30% 50%;
+  border-right: 1px solid gray;
+  border-top-left-radius: 0.3rem ;
+  border-bottom-left-radius: 0.3rem;
 }
 
 #adettendir {
-  padding: 20% 50%;
+  padding: 30% 50%;
+  border: 1px solid gray;
 }
 
 .siparis-toplami {
@@ -139,12 +149,12 @@
   width: 100%;
   margin-top: 2rem;
   display: block;
+  border: 1px solid gray;
+  border-radius: 0.3rem;
 }
 
 button {
   background: #fdc913;
-  border: 1px solid gray;
-  border-radius: 0.3rem;
 }
 
 #kirmizi {
