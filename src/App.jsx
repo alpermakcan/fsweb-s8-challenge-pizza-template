@@ -103,7 +103,7 @@ function App() {
   console.log(siparis);
   return (
     <>
-    <section className="allcontainer">
+    <section className="siparis-page">
       <Header />
       <Card>
       <Content ucret={pizza_ucreti} />
