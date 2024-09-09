@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./assets/components/Header";
-import Content from "./assets/components/Content";
+import Header from "./components/Header";
+import Content from "./components/Content";
 import { Card } from "reactstrap";
 
 const ekMalzemeler = [
@@ -32,8 +32,8 @@ const initialSiparis = {
 };
 
 const initialErrors = {
-  boyut: "Lütfen pizza boyutu seçiniz",
-  hamur: "Lütfen hamur tipi seçiniz",
+  boyut: "",
+  hamur: "",
 };
 
 const errorMessages = {
